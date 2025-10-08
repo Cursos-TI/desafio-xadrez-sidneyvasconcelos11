@@ -4,7 +4,6 @@
 // Este código inicial serve como base para o desenvolvimento do sistema de movimentação das peças de xadrez.
 // O objetivo é utilizar estruturas de repetição e funções para determinar os limites de movimentação dentro do jogo.
 
-int main() {
     // Nível Novato - Movimentação das Peças
     // Sugestão: Declare variáveis constantes para representar o número de casas que cada peça pode se mover.
 
@@ -28,5 +27,50 @@ int main() {
     // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
     // Inclua o uso de continue e break dentro dos loops.
 
-    return 0;
+    int main (){
+
+    int i ;             //Variável dos Loops
+    int movimento;      //Complemento da variável nos Loops
+
+    printf("# # # === Xadrez  -  Movimento das Peças === # # #\n");
+    printf("\n");
+
+
+    // TORRE - Usando o ' FOR '
+    printf("== Movimentando a TORRE - 5 Casas para a Direita ==\n");
+    
+    for (i = 1; i<=5; i++)
+    {
+        printf("Casa %d - Direita \n", i);
+    }
+
+    printf("\n");
+
+    // BISPO - Usando o ' WHILE '
+    printf("== Movimentando o BISPO - 5 Casas para Diagonal (Cima e DIreita) ==\n");
+
+    movimento = 1;
+    while (movimento <= 5)
+    {
+        printf("Casa %d - Cima, Direita \n", movimento);
+        movimento++;
+    }
+    
+    printf("\n");
+
+    // RAINHA - Usando o ' Do While '
+    printf("== Movimentando a RAINHA - 8 Casas para Esquerda ==\n");
+
+    movimento = 1;
+    do
+    {
+        printf("Casa %d - Esquerda\n", movimento);
+        movimento++;
+    } while (movimento <= 8);
+    
+    printf("\n");
+    printf("== Fim da Simulação dos Movimentos das Peças ==\n");
+
+
+    return 0 ;
 }
