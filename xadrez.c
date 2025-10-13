@@ -69,8 +69,26 @@
     } while (movimento <= 8);
     
     printf("\n");
-    printf("== Fim da Simulação dos Movimentos das Peças ==\n");
 
+    // CAVALO - Loop Aninhado, Usando o ' For com o While '
+    printf("== Movimentando o CAVALO - 2 Casas para Baixo e 1 para Esquerda ==\n");
+
+    //Andando 2 casas para baixo
+    for (i = 1; i <= 2; i++)
+    {
+        printf("Casa %d - Baixo \n", i);
+    } 
+    
+    //Acrescentando o While no For (Andando 1 casa para esquerda)
+    movimento = 1;
+    while (movimento <= 1) 
+    {
+        printf("Casa %d - Esquerda \n", movimento + 2); //Pois Já andou 2 casas para baixo
+        movimento++;
+    }
+
+    printf("\n");
+    printf("== Fim da Simulação dos Movimentos das Peças ==\n");
 
     return 0 ;
 }
