@@ -27,67 +27,91 @@
     // Sugestão: Implemente a movimentação do Cavalo utilizando loops com variáveis múltiplas e condições avançadas.
     // Inclua o uso de continue e break dentro dos loops.
 
-    int main (){
 
-    int i ;             //Variável dos Loops
-    int movimento;      //Complemento da variável nos Loops
+    
+    // Função recursiva para a TORRE
+void moverTorre(int casas) {
+    if (casas == 0) return; // caso base
+    moverTorre(casas - 1);
+    printf("Casa %d: Direita\n", casas);
+}
 
-    printf("# # # === Xadrez  -  Movimento das Peças === # # #\n");
-    printf("\n");
+//---------------------------------------------------------------------------------------
 
+// Função recursiva + Loops aninhados para o BISPO
+void moverBispo(int vertical, int horizontal) {
+    if (vertical == 0 || horizontal == 0) return; // caso base
 
-    // TORRE - Usando o ' FOR '
+    // Loop externo para o movimento vertical
+    for (int i = 1; i <= vertical; i++) {
+        
+        // Loop interno para o movimento horizontal
+        for (int j = 1; j <= horizontal; j++) {
+            printf("Casa (%d,%d): Cima, Direita\n", i, j);
+        }
+    }
+
+    // Chamada recursiva reduzindo o tamanho do movimento
+    moverBispo(vertical - 1, horizontal - 1);
+}
+
+//---------------------------------------------------------------------------------------
+
+// Função recursiva para a RAINHA
+void moverRainha(int casas){
+    if (casas == 0) return; // caso base
+    moverRainha(casas - 1);
+    printf("Casa %d: Esquerda\n", casas);
+}
+
+//---------------------------------------------------------------------------------------
+
+// Função para o CAVALO (Loops complexos) - Movimento: 2 casas para cima e 1 para a direita
+void moverCavalo() {
+    
+    int movimentos = 0;
+    for (int i = 1, j = 2; i <= 2 && j >= 1; i++, j--) {
+        if (i == j) {
+            continue; // caso especial: pular movimento redundante
+        }
+
+        printf("Casa %d: Cima\n", i);
+        movimentos++;
+
+        if (movimentos == 2) {
+            printf("Casa %d: Direita\n", movimentos + 1);
+            break; // encerra ao completar o movimento em "L"
+        }
+    }
+}
+
+//---------------------------------------------------------------------------------------
+
+// Função principal
+int main (){
+
+    printf("# # # === Xadrez  -  Movimento das Peças com Recursividade e Loops Complexos === # # #\n\n");
+
+    // Torre
     printf("== Movimentando a TORRE - 5 Casas para a Direita ==\n");
-    
-    for (i = 1; i<=5; i++)
-    {
-        printf("Casa %d - Direita \n", i);
-    }
-
+    moverTorre(5);
     printf("\n");
 
-    // BISPO - Usando o ' WHILE '
-    printf("== Movimentando o BISPO - 5 Casas para Diagonal (Cima e DIreita) ==\n");
-
-    movimento = 1;
-    while (movimento <= 5)
-    {
-        printf("Casa %d - Cima, Direita \n", movimento);
-        movimento++;
-    }
-    
+    // Bispo
+    printf("== Movimentando o BISPO - 5 Casas na Diagonal (Cima e DIreita) ==\n");
+    moverBispo(1, 5);
     printf("\n");
 
-    // RAINHA - Usando o ' Do While '
+    // Rainha
     printf("== Movimentando a RAINHA - 8 Casas para Esquerda ==\n");
-
-    movimento = 1;
-    do
-    {
-        printf("Casa %d - Esquerda\n", movimento);
-        movimento++;
-    } while (movimento <= 8);
-    
+    moverRainha(8);
     printf("\n");
 
-    // CAVALO - Loop Aninhado, Usando o ' For com o While '
-    printf("== Movimentando o CAVALO - 2 Casas para Baixo e 1 para Esquerda ==\n");
+    // Cavalo
+    printf("== Movimentando o CAVALO - 2 Casas para Cima e 1 para Direita ==\n");
+    moverCavalo();
 
-    //Andando 2 casas para baixo
-    for (i = 1; i <= 2; i++)
-    {
-        printf("Casa %d - Baixo \n", i);
-    } 
-    
-    //Acrescentando o While no For (Andando 1 casa para esquerda)
-    movimento = 1;
-    while (movimento <= 1) 
-    {
-        printf("Casa %d - Esquerda \n", movimento + 2); //Pois Já andou 2 casas para baixo
-        movimento++;
-    }
-
-    printf("\n");
+     printf("\n");
     printf("== Fim da Simulação dos Movimentos das Peças ==\n");
 
     return 0 ;
